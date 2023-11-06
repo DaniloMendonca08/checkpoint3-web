@@ -8,6 +8,7 @@ import { Layout } from "../components/layout/Layout"
 import { Title } from "../components/title/Title"
 import { RadioCard, SizeActionWrapper, SizeContentWrapper } from "./Sizes.style"
 import OrderContext from "../../contexts/OrderContext"
+import { useRouter } from "next/navigation"
 
 export default function Sizes() {
 //   const navigate = useNavigate()
@@ -16,62 +17,19 @@ export default function Sizes() {
   const [sizeId, setSizeId] = useState("")
   const [pizzaSizeOptions, setPizzaSizeOptions] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const getPizzaSizeOptions = async () => {
-
-    const sizeOptions = [
-      {
-        id: "10",
-        flavours: 1,
-        size: 35,
-        slices: 8,
-        text: "Grande",
-      },
-      {
-        id: "11",
-        flavours: 2,
-        size: 35,
-        slices: 8,
-        text: "Grande",
-      },
-      {
-        id: "20",
-        flavours: 1,
-        size: 28,
-        slices: 4,
-        text: "Média",
-      },
-      {
-        id: "21",
-        flavours: 2,
-        size: 28,
-        slices: 4,
-        text: "Média",
-      },
-      {
-        id: "30",
-        flavours: 1,
-        size: 18,
-        slices: 1,
-        text: "Broto",
-      },
-      {
-        id: "31",
-        flavours: 2,
-        size: 18,
-        slices: 1,
-        text: "Broto",
-      },
-    ]
-    //setIsLoading(true)
-    // try {
-    //   const response = await fetch("http://localhost:3000/sizes")
-    //   const options = await response.json()
-    setPizzaSizeOptions(sizeOptions)
-    // } catch (error) {
-    //   alert(`Deu ruim:  ${error}`)
-    // } finally {
-    // }
+    setIsLoading(true)
+     try {
+       const response = await fetch("http://localhost:8000/pizza/sizes")
+       const options = await response.json()
+       setPizzaSizeOptions(options)
+     } catch (error) {
+       alert(`Deu ruim:  ${error}`)
+     } finally {
+    setIsLoading(false)
+     }
   }
 
   const getPizzaSize = (id: string) => {
@@ -83,13 +41,13 @@ export default function Sizes() {
   }
 
   const handleBack = () => {
-    // navigate(routes.home)
+    router.push('/')
   }
 
   const handleNext = () => {
     const selectedSize = getPizzaSize(sizeId)
     setPizzaSize(selectedSize)
-    // navigate(routes.pizzaFlavour)
+    router.push('/flavours')
   }
 
   useEffect(() => {
