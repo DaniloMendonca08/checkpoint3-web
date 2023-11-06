@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { GlobalStyles } from '@/styles/GlobalStyles'
 import Checkout from './checkout/page'
-import Home from './home/Home'
+import Home from './home/page'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,10 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>
-        <GlobalStyles />
-        <Home />
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
