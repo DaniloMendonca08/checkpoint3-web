@@ -10,6 +10,7 @@ import { Title } from "../components/title/Title"
 import { StyledLabelLogin } from "./Login.styles"
 import { StyledDivLogin } from "./Login.styles"
 import { StyledButtonLogin } from "./Login.styles"
+import { StyledValueLogin } from "./Login.styles"
 
 export default function Login() {
 //   const navigate = useNavigate()
@@ -69,7 +70,7 @@ export default function Login() {
             <StyledLabelLogin>
               <label htmlFor="login">Login</label>
             </StyledLabelLogin>
-              <input
+              <input className="input-login"
                 type="text"
                 name="login"
                 id="login"

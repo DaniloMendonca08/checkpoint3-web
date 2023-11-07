@@ -15,3 +15,7 @@ export const StyledButtonLogin = styled.button`
     cursor: pointer;
     color: ${colors.text.light};
 `
+
+export const StyledValueLogin = styled.input`
+    color: ${colors.text.light};
+`

@@ -3,7 +3,7 @@
 import { Layout } from "../components/layout/Layout";
 import { Title } from "../components/title/Title";
 
-export default function finishedOrder () {
+export default function FinishedOrder () {
     return (
         <Layout>
             <Title>Obrigado pelo pedido!</Title>
