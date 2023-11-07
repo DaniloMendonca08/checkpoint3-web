@@ -18,6 +18,7 @@ import {
   SummaryTitle,
 } from "./Summary.style"
 import { Button } from "../components/button/Button"
+import { useRouter } from "next/navigation"
 
 export default function Summary() {
 //   const navigate = useNavigate()
@@ -25,9 +26,10 @@ export default function Summary() {
   const { pizzaSize, pizzaFlavour, setPizzaOrder } = useContext(OrderContext)
   const [summaryData, setSummaryData] = useState({})
   const [summaryAmount, setSummaryAmount] = useState(0)
+  const router = useRouter()
 
   const handleBack = () => {
-    navigate(routes.pizzaFlavour)
+    router.push('/flavours')
   }
   const handleNext = () => {
     const payload = {
@@ -42,16 +44,16 @@ export default function Summary() {
     }
 
     setPizzaOrder(payload)
-    // navigate(routes.checkout)
+    router.push('/checkout')
   }
 
   useEffect(() => {
     if (!pizzaFlavour) {
-    //   return navigate(routes.pizzaSize)
+      return router.push('/sizes')
     }
 
     if (!pizzaSize) {
-    //   return navigate(routes.home)
+     return router.push('/')
     }
 
     setSummaryData({

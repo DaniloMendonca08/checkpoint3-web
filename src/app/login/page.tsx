@@ -4,6 +4,7 @@ import { useContext, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 // import { routes } from "../../routes"
 import OrderContext from "../../contexts/OrderContext"
+import { useRouter } from "next/navigation"
 
 export default function Login() {
 //   const navigate = useNavigate()
@@ -11,6 +12,8 @@ export default function Login() {
 
   const [login, setLogin] = useState("")
   const [password, setPassword] = useState("")
+
+  const router = useRouter()
 
   const handleLogin = (event) => {
     setLogin(event.target.value)
@@ -46,9 +49,9 @@ export default function Login() {
     sessionStorage.setItem("token", `${login}.${password}`)
 
     if (pizzaOrder) {
-    //   return navigate(routes.checkout)
+    return router.push('/checkout')
     } else {
-    //   return navigate(routes.pizzaSize)
+    return router.push('/sizes')
     }
   }
 
