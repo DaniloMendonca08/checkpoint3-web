@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Layout } from "../components/layout/Layout";
 import { Title } from "../components/title/Title";
-import { StyledDivSingUp } from "./singUp.style";
-import { StyledLabelSingUp } from "./singUp.style";
+import { StyledDivSingUp } from "./SingUp.style";
+import { StyledLabelSingUp } from "./SingUp.style";
 
 export default function SignUp() {
 

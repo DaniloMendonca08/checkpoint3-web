@@ -5,6 +5,11 @@ import { useContext, useState } from "react"
 // import { routes } from "../../routes"
 import OrderContext from "../../contexts/OrderContext"
 import { useRouter } from "next/navigation"
+import { Layout } from "../components/layout/Layout"
+import { Title } from "../components/title/Title"
+import { StyledLabelLogin } from "./Login.styles"
+import { StyledDivLogin } from "./Login.styles"
+import { StyledButtonLogin } from "./Login.styles"
 
 export default function Login() {
 //   const navigate = useNavigate()
@@ -56,29 +61,42 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form>
-        <label htmlFor="login">Login</label>
-        <input
-          type="text"
-          name="login"
-          id="login"
-          value={login}
-          onChange={handleLogin}
-        />
-        <label htmlFor="pass">Senha</label>
-        <input
-          type="password"
-          name="pass"
-          id="pass"
-          value={password}
-          onChange={handlePassword}
-        />
-        <button type="submit" onClick={handleSubmit}>
-          Login
-        </button>
-      </form>
-    </div>
+    <Layout>
+      <Title>Login</Title>
+        <div>
+          <form>
+          <StyledDivLogin>
+            <StyledLabelLogin>
+              <label htmlFor="login">Login</label>
+            </StyledLabelLogin>
+              <input
+                type="text"
+                name="login"
+                id="login"
+                value={login}
+                onChange={handleLogin}
+              />
+          </StyledDivLogin>
+
+          <StyledDivLogin>
+            <StyledLabelLogin>
+              <label htmlFor="pass">Senha</label>
+            </StyledLabelLogin>
+              <input
+                type="password"
+                name="pass"
+                id="pass"
+                value={password}
+                onChange={handlePassword}
+              />
+          </StyledDivLogin>
+          <StyledButtonLogin>
+              <button type="submit" onClick={handleSubmit}>
+                Login
+              </button>
+          </StyledButtonLogin>
+          </form>
+        </div>
+    </Layout>
   )
 }
