@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { GlobalStyles } from '@/styles/GlobalStyles'
 import Checkout from './checkout/page'
 import Home from './home/page'
+import { OrderContextProvider } from '@/contexts/OrderContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <OrderContextProvider>
+      <GlobalStyles />
       <body>{children}</body>
+      </OrderContextProvider>
     </html>
   )
 }
