@@ -5,6 +5,8 @@ import { Layout } from "../components/layout/Layout";
 import { Title } from "../components/title/Title";
 import { StyledDivSignUp } from "./signUp.style";
 import { StyledLabelSignUp } from "./signUp.style";
+import { Button } from "../components/button/Button";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
 
@@ -14,7 +16,8 @@ export default function SignUp() {
     const [password, setPassword] = useState("")
     const [cep,setCep] = useState("")
     const [isSearchingcep, setIsSearchingCep] = useState(false)
-    const [address, setAddress] = useState([])
+    const [address, setAddress] = useState({})
+    const router = useRouter()
 
     const handleName = (event) => {
         setName(event.target.value)
@@ -32,18 +35,36 @@ export default function SignUp() {
         setPassword(event.target.value)
     }
 
-    const handleCep = async () => {
-        try {
-            const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
-            const options = await response.json()
-            setAddress(options)
-            setIsSearchingCep(true)
-          } catch (error) {
-            alert(`Deu ruim:  ${error}`)
-          } finally {
-
-          }
+    const handleCep = (event) => {
+      setCep(event.target.value)
+      
     }
+
+    const handleSearchCep = async (event) => {
+      if (cep == "") {
+        alert("Digite um CEP antes de clicar!")
+      }
+      else {
+        try {
+          setIsSearchingCep(true)
+          const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
+          const options = await response.json()
+          console.log(options);
+          
+          setAddress(options)
+          // setIsSearchingCep(true)
+        } catch (error) {
+          alert(`Deu ruim:  ${error}`)
+        } 
+      }
+       
+        
+    }
+
+    const handleNext = () => [
+      sessionStorage.setItem("token", `${email}}.${password}`),
+      router.push('/login')
+    ]
  
     return (
         <Layout>
@@ -52,7 +73,7 @@ export default function SignUp() {
           <StyledLabelSignUp>
             <label htmlFor="name">Nome</label>
           </StyledLabelSignUp>
-          <input className="StyledinputSingUp"
+          <input
             type="text"
             name="name"
             id="name"
@@ -109,14 +130,26 @@ export default function SignUp() {
             name="cep"
             id="cep"
             value={cep}
-            onBlur={handleCep}
+            onChange={handleCep}
           />
 
-          {isSearchingcep ? (
-            address.map(({ id })) => (
+          <Button onClick={handleSearchCep}>Buscar CEP</Button>
 
-            )
-          ) : ("")}
+          {/* {isSearchingcep ? (
+            <StyledLabelSignUp>address.get("state")</StyledLabelSignUp>
+          ) : null}  */}
+          {isSearchingcep ? (
+              <>
+              <StyledLabelSignUp>Estado: {address.state}</StyledLabelSignUp>
+              <StyledLabelSignUp>Cidade: {address.city}</StyledLabelSignUp>
+              <StyledLabelSignUp>Bairro: {address.neighborhood}</StyledLabelSignUp>
+              <StyledLabelSignUp>Rua: {address.street}</StyledLabelSignUp>
+              <Button onClick={handleNext}>Finalizar Cadastro</Button>
+              </>
+
+            
+          ) : null}
+          
         </StyledDivSignUp>
         </Layout>
     )
