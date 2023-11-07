@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Layout } from "../components/layout/Layout";
 import { Title } from "../components/title/Title";
+import { StyledDivSingUp } from "./singUp.style";
+import { StyledLabelSingUp } from "./singUp.style";
 
 export default function SignUp() {
 
@@ -42,50 +44,70 @@ export default function SignUp() {
     return (
         <Layout>
             <Title>Cadastro do usuário</Title>
+        <StyledDivSingUp>
+          <StyledLabelSingUp>
             <label htmlFor="name">Nome</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={handleName}
-        />
-
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmail}
-        />
-
-        <label htmlFor="phone">Telefone</label>
-        <input
-          type="text"
-          name="phone"
-          id="phone"
-          value={phone}
-          onChange={handlePhone}
-        />
-
-        <label htmlFor="password">Senha</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <label htmlFor="cep">CEP("digite no formato: 01234023")</label>
-        <input
-          type="text"
-          name="cep"
-          id="cep"
-          value={cep}
-          onChange={handleCep}
-        />
+          </StyledLabelSingUp>
+          <input className="StyledinputSingUp"
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={handleName}
+          />
+        </StyledDivSingUp>
+        
+        <StyledDivSingUp>
+          <StyledLabelSingUp>
+            <label htmlFor="email">Email</label>
+          </StyledLabelSingUp>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleEmail}
+          />
+        </StyledDivSingUp>
+        
+        <StyledDivSingUp>
+          <StyledLabelSingUp>
+            <label htmlFor="email">Telefone</label>
+          </StyledLabelSingUp>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            value={phone}
+            onChange={handlePhone}
+          />
+        </StyledDivSingUp>
+        
+        <StyledDivSingUp>
+          <StyledLabelSingUp>
+            <label htmlFor="email">Senha</label>
+          </StyledLabelSingUp>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={handlePassword}
+          />
+        </StyledDivSingUp>
+        
+        <StyledDivSingUp>
+          <StyledLabelSingUp>
+            <label htmlFor="cep">CEP("digite no formato: 01234023")</label>
+          </StyledLabelSingUp>
+          <input
+            type="text"
+            name="cep"
+            id="cep"
+            value={cep}
+            onChange={handleCep}
+          />
+        </StyledDivSingUp>
         </Layout>
     )
 }
