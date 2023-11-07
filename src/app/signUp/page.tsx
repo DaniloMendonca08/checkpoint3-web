@@ -13,6 +13,8 @@ export default function SignUp() {
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
     const [cep,setCep] = useState("")
+    const [isSearchingcep, setIsSearchingCep] = useState(false)
+    const [address, setAddress] = useState([])
 
     const handleName = (event) => {
         setName(event.target.value)
@@ -34,10 +36,12 @@ export default function SignUp() {
         try {
             const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
             const options = await response.json()
+            setAddress(options)
+            setIsSearchingCep(true)
           } catch (error) {
             alert(`Deu ruim:  ${error}`)
           } finally {
-            // setIsLoading(false)
+
           }
     }
  
@@ -105,8 +109,14 @@ export default function SignUp() {
             name="cep"
             id="cep"
             value={cep}
-            onChange={handleCep}
+            onBlur={handleCep}
           />
+
+          {isSearchingcep ? (
+            address.map(({ id })) => (
+
+            )
+          ) : ("")}
         </StyledDivSignUp>
         </Layout>
     )
