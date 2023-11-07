@@ -23,12 +23,14 @@ import {
   FlavourContentWrapper,
 } from "./Flavours.style"
 import { Title } from "../components/title/Title"
+import { useRouter } from "next/navigation"
 
 export default function Flavours() {
 //   const navigate = useNavigate()
   const { pizzaSize, pizzaFlavour, setPizzaFlavour } = useContext(OrderContext)
   const [flavourId, setflavourId] = useState("")
   const [flavoursOptions, setFlavoursOptions] = useState([])
+  const router = useRouter()
 
   const getPizzaFlavoursOptions = async () => {
     // setIsLoading(true)
@@ -52,13 +54,13 @@ export default function Flavours() {
   }
 
   const handleBack = () => {
-    // navigate(routes.pizzaSize)
+    router.push('/sizes')
   }
 
   const handleNext = () => {
     const selectedFlavour = getPizzaFlavour(flavourId)
     setPizzaFlavour(selectedFlavour)
-    // navigate(routes.summary)
+    router.push('/summary')
   }
 
   useEffect(() => {
@@ -79,9 +81,11 @@ export default function Flavours() {
             <FlavourCardImage src={image} alt={name} />
             <FlavourCardTitle>{name}</FlavourCardTitle>
             <FlavourCardDescription>{description}</FlavourCardDescription>
-            <FlavourCardPrice>
+            {pizzaSize && pizzaSize[0] && (
+              <FlavourCardPrice>
               {convertToCurrency(price[pizzaSize[0].slices])}
-            </FlavourCardPrice>
+              </FlavourCardPrice>
+              )}
             <Button id={id} onClick={handleClick}>
               Selecionar
             </Button>
