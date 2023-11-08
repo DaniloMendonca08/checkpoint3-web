@@ -32,6 +32,7 @@ export default function Summary() {
     router.push('/flavours')
   }
   const handleNext = () => {
+
     const payload = {
       item: {
         name: summaryData.name,
@@ -42,9 +43,15 @@ export default function Summary() {
       },
       total: summaryAmount,
     }
-
     setPizzaOrder(payload)
-    router.push('/checkout')
+
+    if (sessionStorage.length == 0) {
+      router.push('/login')
+      
+    }
+    else {
+      router.push('/checkout')
+    }
   }
 
   useEffect(() => {
