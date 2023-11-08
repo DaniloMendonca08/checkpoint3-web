@@ -1,7 +1,6 @@
 "use client"
 
 import { useContext, useEffect, useState } from "react"
-// import { useNavigate } from "react-router-dom"
 import { Layout } from "../components/layout/Layout"
 import { Title } from "../components/title/Title"
 import OrderContext from "../../contexts/OrderContext"
@@ -17,8 +16,6 @@ import { useRouter } from "next/navigation"
 
 export default function Checkout() {
   const { pizzaOrder } = useContext(OrderContext)
-
-//   const navigate = useNavigate()
 
   const [paymentOptions, setPaymentOptions] = useState([])
 
@@ -54,20 +51,15 @@ export default function Checkout() {
   }
 
   const createOrder = (orderPayload) => {
-    try {
-      fetch("http://localhost:8000/order/create_order", {
-        method: "POST",
-        body: JSON.stringify(orderPayload),
-      })
-    } catch (error) {
-      console.log(error)
-    } finally {
-      console.log("Finally")
-    }
+    return fetch("http://localhost:8000/order/create_order", {
+      method: "POST",
+      body: JSON.stringify(orderPayload),
+    })
   }
 
   const handleClick = () => {
     createOrder(pizzaOrder)
+
     if (sessionStorage == null) {
       router.push('/login')
     }
