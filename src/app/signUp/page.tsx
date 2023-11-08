@@ -40,7 +40,7 @@ export default function SignUp() {
       
     }
 
-    const handleSearchCep = async (event) => {
+    const handleSearchCep = async () => {
       if (cep == "") {
         alert("Digite um CEP antes de clicar!")
       }
@@ -49,10 +49,8 @@ export default function SignUp() {
           setIsSearchingCep(true)
           const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
           const options = await response.json()
-          console.log(options);
-          
           setAddress(options)
-          // setIsSearchingCep(true)
+
         } catch (error) {
           alert(`Deu ruim:  ${error}`)
         } 
@@ -123,7 +121,7 @@ export default function SignUp() {
         
         <StyledDivSignUp>
           <StyledLabelSignUp>
-            <label htmlFor="cep">CEP("digite no formato: 01234023")</label>
+            <label htmlFor="cep">CEP Digite no formato: 01234023</label>
           </StyledLabelSignUp>
           <input
             type="text"
@@ -135,9 +133,6 @@ export default function SignUp() {
 
           <Button onClick={handleSearchCep}>Buscar CEP</Button>
 
-          {/* {isSearchingcep ? (
-            <StyledLabelSignUp>address.get("state")</StyledLabelSignUp>
-          ) : null}  */}
           {isSearchingcep ? (
               <>
               <StyledLabelSignUp>Estado: {address.state}</StyledLabelSignUp>
@@ -147,7 +142,6 @@ export default function SignUp() {
               <Button onClick={handleNext}>Finalizar Cadastro</Button>
               </>
 
-            
           ) : null}
           
         </StyledDivSignUp>
