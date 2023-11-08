@@ -5,6 +5,7 @@ import { Layout } from "../components/layout/Layout";
 import { Title } from "../components/title/Title";
 import { StyledDivSignUp } from "./signUp.style";
 import { StyledLabelSignUp } from "./signUp.style";
+import { StyledButtonSignUp } from "./signUp.style";
 import { Button } from "../components/button/Button";
 import { useRouter } from "next/navigation";
 
@@ -120,31 +121,37 @@ export default function SignUp() {
         </StyledDivSignUp>
         
         <StyledDivSignUp>
-          <StyledLabelSignUp>
-            <label htmlFor="cep">CEP Digite no formato: 01234023</label>
-          </StyledLabelSignUp>
-          <input
-            type="text"
-            name="cep"
-            id="cep"
-            value={cep}
-            onChange={handleCep}
-          />
+            <StyledLabelSignUp>
+              <label htmlFor="cep">CEP Digite no formato: 01234023</label>
+            </StyledLabelSignUp>
 
-          <Button onClick={handleSearchCep}>Buscar CEP</Button>
+              <StyledDivSignUp>
+              <input
+                type="text"
+                name="cep"
+                id="cep"
+                value={cep}
+                onChange={handleCep}
+              />
+              </StyledDivSignUp>
+
+            <StyledButtonSignUp>
+              <Button onClick={handleSearchCep}>Buscar CEP</Button>
+            </StyledButtonSignUp>
+        </StyledDivSignUp>
 
           {isSearchingcep ? (
               <>
-              <StyledLabelSignUp>Estado: {address.state}</StyledLabelSignUp>
-              <StyledLabelSignUp>Cidade: {address.city}</StyledLabelSignUp>
-              <StyledLabelSignUp>Bairro: {address.neighborhood}</StyledLabelSignUp>
-              <StyledLabelSignUp>Rua: {address.street}</StyledLabelSignUp>
+              <StyledDivSignUp><StyledLabelSignUp>Estado: {address.state}</StyledLabelSignUp></StyledDivSignUp>
+              <StyledDivSignUp><StyledLabelSignUp>Cidade: {address.city}</StyledLabelSignUp></StyledDivSignUp>
+              <StyledDivSignUp><StyledLabelSignUp>Bairro: {address.neighborhood}</StyledLabelSignUp></StyledDivSignUp>
+              <StyledDivSignUp><StyledLabelSignUp>Rua: {address.street}</StyledLabelSignUp></StyledDivSignUp>
               <Button onClick={handleNext}>Finalizar Cadastro</Button>
               </>
 
           ) : null}
           
-        </StyledDivSignUp>
+        
         </Layout>
     )
 }
