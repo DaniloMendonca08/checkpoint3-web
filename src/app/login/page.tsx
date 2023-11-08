@@ -30,24 +30,36 @@ export default function Login() {
   }
 
   const toLogin = (userPayload) => {
-    try {
-      fetch("http://localhost:8000/user/login", {
-        method: "POST",
-        body: JSON.stringify(userPayload),
-      })
-    } catch (error) {
-      console.log(error)
-    } finally {
-      console.log("finnaly")
-    }
+    // try {
+    //     fetch("http://localhost:8000/user/login", {
+    //     method: "POST",
+    //     body: JSON.stringify(userPayload),
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     }
+    //   })
+ 
+    //   .then(data =>{
+    //     if (data.token) {
+    //       const token = data.token;
+    //       sessionStorage.setItem("TokenUbira", token);
+    //     }
+    //   })
+     
+    // } catch (error) {
+    //   console.log(error)
+    // } finally {
+    //   console.log("finnaly")
+    // }
   }
+  
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
     const payload = {
-      user: login,
-      pass: password,
+      user: "jorge@abreu.com.br",
+      pass: "abobrinha",
     }
 
     toLogin(payload)
@@ -61,16 +73,20 @@ export default function Login() {
     }
   }
 
+  const handleRegister =  () => {
+    router.push('/signUp')
+  }
+
   return (
     <Layout>
       <Title>Login</Title>
         <div>
           <form>
           <StyledDivLogin>
-            <StyledLabelLogin>
-              <label htmlFor="login">Login</label>
+            <StyledLabelLogin htmlFor="login">
+              Login
             </StyledLabelLogin>
-              <input className="input-login"
+              <input
                 type="text"
                 name="login"
                 id="login"
@@ -80,8 +96,8 @@ export default function Login() {
           </StyledDivLogin>
 
           <StyledDivLogin>
-            <StyledLabelLogin>
-              <label htmlFor="pass">Senha</label>
+            <StyledLabelLogin htmlFor="pass">
+              Senha
             </StyledLabelLogin>
               <input
                 type="password"
@@ -91,12 +107,14 @@ export default function Login() {
                 onChange={handlePassword}
               />
           </StyledDivLogin>
-          <StyledButtonLogin>
-              <button type="submit" onClick={handleSubmit}>
+          <StyledButtonLogin type="submit" onClick={handleSubmit}>
                 Login
-              </button>
           </StyledButtonLogin>
+
           </form>
+          <button onClick={handleRegister}>
+                Cadastro
+          </button>
         </div>
     </Layout>
   )
