@@ -1,13 +1,6 @@
 import styled from "styled-components"
 import { colors } from "@/styles/Colors"
 
-export const StyledCardLogin = styled.div`
-    // background: gray;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-`
-
 export const StyledDivLogin = styled.div`
     margin-bottom: 10px;
     color: white;

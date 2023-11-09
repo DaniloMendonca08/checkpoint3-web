@@ -11,7 +11,6 @@ import { StyledLabelLogin } from "./Login.styles"
 import { StyledDivLogin } from "./Login.styles"
 import { StyledButtonLogin } from "./Login.styles"
 import { StyledButtonCadastro } from "./Login.styles"
-import { StyledCardLogin } from "./Login.styles"
 
 export default function Login() {
 //   const navigate = useNavigate()
@@ -80,7 +79,6 @@ export default function Login() {
 
   return (
     <Layout>
-      <StyledCardLogin>
         <Title>Login</Title>
           <StyledDivLogin>
             <StyledLabelLogin htmlFor="login">Login</StyledLabelLogin>
@@ -107,7 +105,6 @@ export default function Login() {
           <StyledButtonLogin type="submit" onClick={handleSubmit}>Login</StyledButtonLogin>
 
           <StyledButtonCadastro><button onClick={handleRegister}>Cadastro</button></StyledButtonCadastro>
-        </StyledCardLogin>
     </Layout>
   )
 }
