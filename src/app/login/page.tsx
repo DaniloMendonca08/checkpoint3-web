@@ -79,32 +79,31 @@ export default function Login() {
 
   return (
     <Layout>
-        <Title>Login</Title>
-          <StyledDivLogin>
-            <StyledLabelLogin htmlFor="login">Login</StyledLabelLogin>
-              <input
-                type="text"
-                name="login"
-                id="login"
-                value={login}
-                onChange={handleLogin}
-              />
-          </StyledDivLogin>
+      <Title>Login</Title>
+            <StyledDivLogin>
+              <StyledLabelLogin htmlFor="login">Email</StyledLabelLogin>
+                <input
+                  type="text"
+                  name="login"
+                  id="login"
+                  value={login}
+                  onChange={handleLogin}
+                />
+            </StyledDivLogin>
 
-          <StyledDivLogin>
-            <StyledLabelLogin htmlFor="pass">Senha</StyledLabelLogin>
-              <input
-                type="password"
-                name="pass"
-                id="pass"
-                value={password}
-                onChange={handlePassword}
-              />
-          </StyledDivLogin>
-          
-          <StyledButtonLogin type="submit" onClick={handleSubmit}>Login</StyledButtonLogin>
-
-          <StyledButtonCadastro><button onClick={handleRegister}>Cadastro</button></StyledButtonCadastro>
+            <StyledDivLogin>
+              <StyledLabelLogin htmlFor="pass">Senha</StyledLabelLogin>
+                <input
+                  type="password"
+                  name="pass"
+                  id="pass"
+                  value={password}
+                  onChange={handlePassword}
+                />
+            </StyledDivLogin>
+            
+            <StyledButtonLogin type="submit" onClick={handleSubmit}>Login</StyledButtonLogin>
+            <StyledButtonCadastro><button onClick={handleRegister}>Cadastro</button></StyledButtonCadastro>
     </Layout>
   )
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { colors } from "@/styles/Colors"
+import { sizes } from "@/styles/Sizes"
 
 export const StyledDivLogin = styled.div`
     margin-bottom: 10px;
