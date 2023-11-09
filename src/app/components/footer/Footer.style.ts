@@ -4,7 +4,7 @@ import { sizes } from "../../../styles/Sizes"
 
 export const Elementfooter = styled.footer`
   padding-top: ${sizes.large};
-  padding-bottom: ${sizes.main};
+  padding-bottom: 39px;
   text-align: center;
   font-size: ${sizes.xsmall};
   background-color: ${colors.secondary.light};
