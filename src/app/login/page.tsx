@@ -103,7 +103,7 @@ export default function Login() {
             </StyledDivLogin>
             
             <StyledButtonLogin type="submit" onClick={handleSubmit}>Login</StyledButtonLogin>
-            <StyledButtonCadastro><button onClick={handleRegister}>Cadastro</button></StyledButtonCadastro>
+            <StyledButtonCadastro onClick={handleRegister}>Cadastro</StyledButtonCadastro>
     </Layout>
   )
 }
