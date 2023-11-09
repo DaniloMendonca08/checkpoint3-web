@@ -11,7 +11,7 @@ export default function home() {
   return (
       <>
       <GlobalStyles />
-      <SignUp/>
+      <Login/>
       </>
   )
 }
